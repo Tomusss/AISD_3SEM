@@ -2,9 +2,9 @@
 
 using namespace std; 
 
-void insertionSort(int A[] ,int n){
+void insertionSort(float A[] ,int n){
     for(int i = 1;i < n;i++){
-        int key = A[i];
+        float key = A[i];
         int j = i-1;
         while(j >= 0 && A[j] > key){
             A[j+1] = A[j];
@@ -14,9 +14,9 @@ void insertionSort(int A[] ,int n){
     }
 }
 
-void double_insertionSort(int A[], int n) {
+void double_insertionSort(float A[], int n) {
     for (int i = 1; i < n; i += 2) {
-        int key1, key2;
+        float key1, key2;
         if (A[i] < A[i+1]){
             key1 = A[i];
             key2 = A[i + 1];
@@ -43,13 +43,14 @@ void double_insertionSort(int A[], int n) {
     }
 }
 int main(){
-    int A[] = {5, 3, 2, 6,1};
-    int n = 5;
+    float A[] = {5.23,-1,5.22,3, 2, 6,1};
+    int n = 7;
 
     double_insertionSort(A,n);
+    insertionSort(A,n);
 
     for(int i = 0; i<n; i++){
-        cout << A[i];
+        cout << A[i] << ' ';
     }
 
 }
