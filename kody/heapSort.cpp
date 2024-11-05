@@ -3,8 +3,12 @@
 
 using namespace std;
 
+int porownania = 0; 
+int przypisania = 0;
+
 int left(int i){
     return 2 * i + 1;
+    
 }
 int right(int i){
     return 2 * i + 2;
@@ -14,22 +18,29 @@ void heapify(float A[], int n, int i){
     int largest;
     int l = left(i);
     int r = right(i);
+    przypisania += 3;
     
     if (l < n && A[l] > A[i]){
         largest = l;
     } else {
         largest = i;
     }
+    porownania+=2;
+    przypisania++;
 
     if (r < n && A[r] > A[largest]){
         largest = r;
+        przypisania++;
     }
+    porownania += 2;
     if (i != largest){
         float temp = A[i];
         A[i] = A[largest];
         A[largest] = temp;
         heapify(A,n,largest);
-    } 
+        przypisania+=3;
+    }
+    porownania++;
 }
 
 void build_heap(float A[],int n){
@@ -44,6 +55,7 @@ void heap_sort(float A[],int n){
         float temp = A[i];
         A[i] = A[0];
         A[0] = temp;
+        przypisania+=3;
         heapify(A,i,0);
     }
 }
@@ -77,5 +89,7 @@ int main(){
     for(int i = 0; i<n; i++){
         cout << A[i] << ' ';
     }
+    cout << "\nLiczba porównań: " << porownania << endl;
+    cout << "Liczba przypisań: " << przypisania << endl;
 
 } 

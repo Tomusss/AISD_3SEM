@@ -3,13 +3,19 @@
 
 using namespace std;
 
+int porownania = 0; 
+int przypisania = 0;
+
 void insertionSort(float A[] ,int n){
     for(int i = 1;i < n;i++){
         float key = A[i];
+        przypisania++;
         int j = i-1;
         while(j >= 0 && A[j] > key){
+            porownania += 2;
             A[j+1] = A[j];
-            j = j-1; 
+            j = j-1;
+            przypisania+=2 ;
         }
         A[j+1] = key;
     }
@@ -44,5 +50,8 @@ int main(){
     for(int i = 0; i<n; i++){
         cout << A[i] << ' ';
     }
+
+    cout << "\nLiczba porównań: " << porownania << endl;
+    cout << "Liczba przypisań: " << przypisania << endl;
 
 } 

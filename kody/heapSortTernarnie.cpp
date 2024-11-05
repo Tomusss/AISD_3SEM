@@ -2,6 +2,9 @@
 #include <random>
 using namespace std;
 
+int porownania = 0; 
+int przypisania = 0;
+
 int left(int i){
     return 3 * i + 1;
 }
@@ -17,26 +20,34 @@ void heapify(float A[], int n, int i){
     int l = left(i);
     int m = middle(i);
     int r = right(i);
+    przypisania += 4;
     
     if (l < n && A[l] > A[i]){
         largest = l;
     } else {
         largest = i;
     }
+    porownania+=2;
+    przypisania++;
 
     if (m < n && A[m] > A[largest]){
         largest = m;
+        przypisania++;
     }
 
     if (r < n && A[r] > A[largest]){
         largest = r;
+        przypisania++;
     }
+    porownania+=4;
     if (i != largest){
         float temp = A[i];
         A[i] = A[largest];
         A[largest] = temp;
+        przypisania+=3;
         heapify(A,n,largest);
     } 
+    porownania++;
 }
 void build_heap(float A[],int n){
     for (int i = (n/3)-1; i >= 0; i--){
@@ -50,6 +61,7 @@ void heapSort(float A[],int n){
         float temp = A[i];
         A[i] = A[0];
         A[0] = temp;
+        przypisania+=3;
         heapify(A,i,0);
     }
 }
@@ -82,5 +94,7 @@ int main(){
     for(int i = 0; i<n; i++){
         cout << A[i] << ' ';
     }
+    cout << "\nLiczba porównań: " << porownania << endl;
+    cout << "Liczba przypisań: " << przypisania << endl;
 
 } 
