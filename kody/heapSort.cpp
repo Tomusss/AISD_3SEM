@@ -1,4 +1,6 @@
 #include <iostream>
+#include <random>
+
 using namespace std;
 
 int left(int i){
@@ -47,15 +49,33 @@ void heap_sort(float A[],int n){
 }
 
 
-int main() {
-    float A[] = {13, 11, -13,22,-1,66, 5, 6,6.66, 7};
-    int n = 10 ;
+void randArr(float A[], int n)
+{
+    random_device rd;
 
-    heap_sort(A,n);
+    mt19937 e2(rd());
+    uniform_real_distribution<> dist(-10000, 10000);
 
     for (int i = 0; i < n; i++) {
-        cout << A[i] << " ";
+        A[i] = dist(e2);
     }
-    
-
 }
+
+int main(){
+    int n = 10;
+    float A[10];
+    randArr(A,n);
+    cout << "przed sortowaniem: ";
+    for(int i = 0; i<n; i++){
+        cout << A[i] << ' ';
+    }
+    cout << endl;
+    
+    heap_sort(A,n);
+    
+    cout << "po sortowaniu: ";
+    for(int i = 0; i<n; i++){
+        cout << A[i] << ' ';
+    }
+
+} 
