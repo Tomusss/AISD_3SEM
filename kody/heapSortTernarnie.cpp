@@ -5,21 +5,21 @@ using namespace std;
 int porownania = 0; 
 int przypisania = 0;
 
-int leftT(int i){
+int left(int i){
     return 3 * i + 1;
 }
-int middleT(int i){
+int middle(int i){
     return 3 * i + 2;
 }
-int rightT(int i){
+int right(int i){
     return 3 * i + 3;
 }
 
-void heapifyT(float A[], int n, int i){
+void heapify(float A[], int n, int i){
     int largest;
-    int l = leftT(i);
-    int m = middleT(i);
-    int r = rightT(i);
+    int l = left(i);
+    int m = middle(i);
+    int r = right(i);
     przypisania += 4;
     
     if (l < n && A[l] > A[i]){
@@ -45,24 +45,24 @@ void heapifyT(float A[], int n, int i){
         A[i] = A[largest];
         A[largest] = temp;
         przypisania+=3;
-        heapifyT(A,n,largest);
+        heapify(A,n,largest);
     } 
     porownania++;
 }
-void build_heapT(float A[],int n){
+void build_heap(float A[],int n){
     for (int i = (n/3)-1; i >= 0; i--){
-        heapifyT(A,n,i);
+        heapify(A,n,i);
     }
 }
 
-void heapSortT(float A[],int n){
-    build_heapT(A,n);
+void heapSort(float A[],int n){
+    build_heap(A,n);
     for (int i = n-1; i >= 1; i--){
         float temp = A[i];
         A[i] = A[0];
         A[0] = temp;
         przypisania+=3;
-        heapifyT(A,i,0);
+        heapify(A,i,0);
     }
 }
 
@@ -88,7 +88,7 @@ int main(){
     }
     cout << endl;
     
-    heapSortT(A,n);
+    heapSort(A,n);
     
     cout << "po sortowaniu: ";
     for(int i = 0; i<n; i++){
