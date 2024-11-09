@@ -73,11 +73,20 @@ void randArr(float A[], int n)
     }
 }
 
+bool czyPosortowane(float A[], int n){
+    for (int i=0; i<n-1; i++){
+        if (A[i] > A[i + 1]){
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(){
-    int n = 10;
-    float A[10];
+    int n = 100000;
+    float A[n];
     randArr(A,n);
-    cout << "przed sortowaniem: ";
+    /*cout << "przed sortowaniem: ";
     for(int i = 0; i<n; i++){
         cout << A[i] << ' ';
     }
@@ -91,5 +100,8 @@ int main(){
     }
     cout << "\nLiczba porównań: " << porownania << endl;
     cout << "Liczba przypisań: " << przypisania << endl;
+    */
+   heap_sort(A,n);
+   cout << czyPosortowane(A,n) << endl;
 
 } 
