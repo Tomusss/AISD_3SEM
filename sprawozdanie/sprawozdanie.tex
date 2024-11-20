@@ -106,6 +106,35 @@ void heapify(float A[], int n, int i) {
 	
 	
 	\section{Porównanie algorytmów}
+	
+	\subsection{Porównanie teoretyczne algorytmów}
+	
+	Każdy z analizowanych algorytmów sortowania różni się pod względem teoretycznych własności, takich jak złożoność czasowa, pamięciowa oraz stabilność. Poniżej przedstawiono krótkie omówienie tych aspektów w tabeli:
+	
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			\textbf{Algorytm}         & \textbf{Pesymistyczna} & \textbf{Optymistyczna} &\textbf{Stabilność} \\ \hline
+			Insertion Sort            & $O(n^2)$              & $O(n)$              	&  Tak               \\ \hline
+			Merge Sort                & $O(n \log n)$         & $O(n \log n)$         	& Tak                \\ \hline
+			Heap Sort                 & $O(n \log n)$         & $O(n \log n)$			& Nie                \\ \hline
+		\end{tabular}
+		\caption{Porównanie teoretyczne algorytmów}
+		\label{tab:teoretical_comparison}
+	\end{table}
+	
+	
+	\begin{itemize}
+		\item Sortowanie przez wstawianie cechuje się prostotą implementacji i dobrymi wynikami dla niewielkich zbiorów danych, szczególnie jeśli są one już częściowo posortowane. Jednak jego złożoność czasowa w najgorszym przypadku wynosi O(n²), co sprawia, że jest nieefektywny dla dużych zbiorów danych.
+		\item Sortowanie przez scalanie gwarantuje złożoność czasową O(n log n) niezależnie od początkowego uporządkowania danych. Jego wadą jest konieczność alokacji dodatkowej pamięci na podtablice, co może być problematyczne dla bardzo dużych zbiorów danych.
+		\item Sortowanie przez kopcowanie również osiąga złożoność czasową O(n log n) i nie wymaga dodatkowej pamięci proporcjonalnej do rozmiaru sortowanego zbioru. Jednak jego implementacja jest nieco bardziej skomplikowana niż w przypadku sortowania przez scalanie. 
+	\end{itemize}
+	
+	
+	
+	
 	\subsection{Porównanie czasów działania}
 	Porównanie czasów wykonania algorytmów na różnych długościach tablic: od 10 do 100010. Liczby zostały przydzielone losowo z zakresu (-1000;1000). Dane zostały przedstawione na wykresie poniżej.
 	
@@ -136,7 +165,7 @@ void heapify(float A[], int n, int i) {
 	
 	Algorytm \textit{Insertion Sort} wykazuje najwyższą liczbę porównań i przypisań, szczególnie dla większych tablic, co wynika z jego złożoności $O(n^2)$. Z kolei \textit{Merge Sort} i \textit{Heap Sort}, obie o złożoności $O(n \log n)$, wykonują znacznie mniej operacji, co czyni je bardziej wydajnymi przy większych rozmiarach danych. \textit{Merge Sort} ma nieco niższą liczbę operacji niż \textit{Heap Sort}, co może się kłócić z danymi z pierwszego wykresu, natomiast może być to spowodowane faktem, że większym obciążeniem dla komputera jest przechowywanie tablic w pamięci niż wykonywanie operacji. 
 	
-	\newpage
+	
 	\section{Modyfikacje algorytmów}
 	\paragraph{Sortowanie przez wstawianie (podwójne)\\}
 	Pierwszym zmodyfikowanym algorytmem jest insertion sort. Zmiana polega na tym, że zamiast jednego elementu bierzemy dwa, porównujemy je ze sobą, a następnie za pomocą pętli while szukamy miejsca na wstawienie dla mniejszego elementu i powtarzamy to samo dla większego elementu. Musimy dodac także obsługę parzystych tablic gdzie ostatni element sortujemy tak jak w standardowej wersji.
