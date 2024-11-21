@@ -8,59 +8,56 @@ int przypisania = 0;
 
 void double_insertionSort(float A[], int n) {
     
-    for (int i=1;i<n-1; i+=2) {
+    for (int i=1;i<n; i+=2) {
         float key1, key2;
-        if (A[i] < A[i+1]) {
+        if (A[i] < A[i-1]) {
             porownania++;
             key1 = A[i];
-            key2 = A[i+1];
+            key2 = A[i-1];
             przypisania += 2;
         } else {
             porownania++;
-            key1 = A[i+1];
+            key1 = A[i-1];
             key2 = A[i];
             przypisania += 2;
         }
         
+        // sortowanie wiekszego klucza
+        int j = i-2;
+        while (j >= 0 && A[j] > key2) {
+            porownania+=2;
+            A[j + 2] = A[j];
+            przypisania++;
+            j--;
+        }
+        porownania++;
+        A[j + 2] = key2;
+        przypisania++;
+        
         // sortowanie mniejszego klucza
-        int j = i-1;
         while (j >= 0 && A[j] > key1) {
             porownania+=2;
             A[j + 1] = A[j];
             przypisania++;
             j--;
         }
-        porownania++;
-        A[j + 1] = key1;
-        przypisania++;
-        
-        // sortowanie większego klucza
-        int j2 = i;
-        while (j2 > j && A[j2] > key2) {
-            porownania+=2;
-            A[j2 + 1] = A[j2];
-            przypisania++;
-            j2--;
-        }
         porownania+=2;
-        A[j2 + 1] = key2;
+        A[j + 1] = key1;
         przypisania++;
     }
     
     // obsługa parzystej tablicy
-    if (n % 2 == 0) {
-        porownania++;
+    if (n % 2 != 0) {
         float ost = A[n-1];
         przypisania++;
-        int k = n-2;
-        while (k >= 0 && A[k] > ost) {
-            porownania+=2;
-            A[k + 1] = A[k];
-            k = k - 1;
-            przypisania+=2;
+        int j = n-2;
+        while (j>=0 && A[j] > ost) {
+            porownania++;
+            A[j+1] = A[j];
+            przypisania++;
+            j--;
         }
-        porownania+=2;
-        A[k + 1] = ost;
+        A[j+1] = ost;
         przypisania++;
     }
 
@@ -77,8 +74,8 @@ void randArr(float A[], int n) {
 }
 
 int main() {
-    int n = 10;
-    float A[10];
+    int n = 8;
+    float A[n];
     randArr(A, n);
     
     cout << "przed sortowaniem: ";
