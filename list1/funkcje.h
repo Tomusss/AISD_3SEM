@@ -22,6 +22,12 @@ void randArr(float A[], int n)
     }
 }
 
+void sortArr(float A[], int n){
+    for (int i = 0; i < n; i++){
+        A[i] = i;
+    }
+}
+
 
 void insertionSort(float A[] ,int n){
     for(int i = 1;i < n;i++){
