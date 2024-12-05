@@ -78,15 +78,15 @@ void radixSortMod(int A[], int n, int baza){
 }
 
 void randArr(int A[], int n) {
+    int pod = 10;
     random_device rd;
-    mt19937 e2(rd());
-    uniform_int_distribution<> dist(-1000, 1000);
+    mt19937 eng(rd());
+    uniform_int_distribution<> distr(0, pod-1);
 
     for (int i = 0; i < n; i++) {
-        A[i] = dist(e2);
+        A[i] = distr(eng);
     }
 }
-
 int main() {
     int n = 10;
     int A[n];
