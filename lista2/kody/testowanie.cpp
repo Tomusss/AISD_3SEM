@@ -8,7 +8,7 @@ using namespace std::chrono;
 int main() {
     int powtorzenia = 3;
     int najmn = 10;
-    int najw = 20011;
+    int najw = 30020;
     int krok = 1000;
     float *A;
     //int *A;
@@ -26,14 +26,14 @@ int main() {
             char** binaryArray = new char*[i];
             //char** quaternaryArray = new char*[i];
             // randomowe wart
-            //randArrF(A, i);
-            randArrF01(A, i);
+            randArrF(A, i);
+            //randArrF01(A, i);
             //randArrID(A, i);
             //randArrI(A, i);
             auto start = high_resolution_clock::now();
 
-            bucketSort(A,i); //f01
-            //bucketSortMod(A,i); //f
+            //bucketSort(A,i); //f01
+            bucketSortMod(A,i); //f
             //quickSort(A,0,i-1);  //f
             //quickSortMod(A,0,i-1);  //f    
             //radixSortMod(A,i,10);  //int

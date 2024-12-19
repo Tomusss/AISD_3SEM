@@ -117,7 +117,7 @@ void bucketSortMod(float A[], int n) {
     delete[] B;
 }
 //quick sort
-
+/*
 int partition(float A[], int poczatek, int koniec){
     float x = A[koniec];
     int i = poczatek - 1;
@@ -142,7 +142,7 @@ void quickSort(float A[],int p, int k){
         quickSort(A,s+1,k);
     }
 }
-
+*/
 //quick sort mod
 
 pair<int,int> partitionMod(float A[], int poczatek, int koniec){
