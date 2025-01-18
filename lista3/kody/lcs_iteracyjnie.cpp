@@ -39,7 +39,7 @@ void lcs(char* X, char* Y, int** C, char** B, int m, int n) {
                     B[i][j] ='|';
                 }else{
                     C[i][j] = C[i][j-1];
-                    B[i][j]='<';  // Ruch w lewo
+                    B[i][j]='<';
                 }
             }
         }
