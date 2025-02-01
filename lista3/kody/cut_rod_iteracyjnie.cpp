@@ -4,7 +4,7 @@ using namespace std;
 
 int inf = 2147483647;
 
-void ext_bot_up_cut_rod(float P[],float R[],int S[], int n){
+void cut_rod_iteracyjnie(float P[],float R[],int S[], int n){
     R[0] = 0;
     for(int j = 1;j<=n;j++){
         float q = -inf;
@@ -29,7 +29,7 @@ int main(){
     float a[] = {1, 5, 8, 9, 10, 18.22, 18, 20};
     int s[9] = {0};
     float r[9] = {0};
-    ext_bot_up_cut_rod(a,r,s,8);
+    cut_rod_iteracyjnie(a,r,s,8);
     
     cout << endl <<r[n] << endl;
 
